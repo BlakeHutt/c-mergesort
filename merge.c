@@ -32,15 +32,15 @@ int main(){
 }
 
 void mergeSort(int *array, int left, int right){
-     //make an work array the size of the array to be sorted
+     //make a work array the size of the array to be sorted
     int oSize = sizeof(&array)/sizeof(array[0]);
     int mergeArray[oSize];
     int mid = (left + right)/2;
     if(right - left >= 2){
         //middle point to define the bounds between left and right.
 
-        mergeSort(array, left, mid);
-        mergeSort(array,  mid+1, right);
+        mergeSort(array, left, mid); // left subarray
+        mergeSort(array,  mid+1, right); // right subarray
 
         merge(array, mergeArray, left, right, oSize);
     }
@@ -55,7 +55,7 @@ void merge(int *a, int *b, int left, int right, int size){
         if(a[left]<=a[right]){
             b[target] = a[left];
             left++, target++;
-        } else if (a[right] < a[left]){
+        } else { // a[right] < a[left]
             b[target] = a[right];
             target++, right++;
         }
