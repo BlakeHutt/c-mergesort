@@ -3,8 +3,8 @@
 #include <time.h>
 
 
-void mergeSort(int *array, int left, int right);
-void merge(int *a, int *b, int left, int right, int size);
+int mergeSort(int *array, int left, int right);
+int merge(int *a, int *b, int left, int right, int size);
 
 int main(){
 
@@ -31,35 +31,54 @@ int main(){
     return 0;
 }
 
-void mergeSort(int *array, int left, int right){
-     //make a work array the size of the array to be sorted
-    int oSize = sizeof(&array)/sizeof(array[0]);
-    int mergeArray[oSize];
-    int mid = (left + right)/2;
-    if(right - left >= 2){
-        //middle point to define the bounds between left and right.
+int mergeSort(int *array, int left, int right){
+    if(left < right){
+      //  int tempA[right+1];
+        int mid = (left + right)/2;
 
-        mergeSort(array, left, mid); // left subarray
-        mergeSort(array,  mid+1, right); // right subarray
+        int j[right] = mergeSort(array, left, mid); // left subarray
+        int l[right] = mergeSort(array,  mid+1, right); // right subarray
 
-        merge(array, mergeArray, left, right, oSize);
+       return merge(j, l, left, right, right+1);
     }
+return *array;
 }
 
-void merge(int *a, int *b, int left, int right, int size){
+int merge(int *a, int *b, int left, int right, int size){
     
     int target = left, leftBound = right, rightBound = size;
     
-    while(left<leftBound && right<rightBound){
+    while(left <= leftBound && right <= rightBound){
     
-        if(a[left]<=a[right]){
-            b[target] = a[left];
-            left++, target++;
+        if(a[left] <= a[right]){
+            b[target++] = a[left++];
+            //left++;
         } else { // a[right] < a[left]
-            b[target] = a[right];
-            target++, right++;
+            b[target++] = a[right++];
+           // right++; 
         }
+        //target++;
     }
+   
+    /*
+     *  Copy rest of unsorted elements into array
+     *  Copy the temp array back into the main array
+     *
+     *  Depending on which broke the while, it does the other half of the array. 
+     *      ie left broke, so it does the right and vice versa.
+     *
+     */
 
+
+    while(left <= leftBound){
+        b[target++] = a[left++];
+    }
+    while(right <= rightBound){
+        b[target++] = a[right++];
+    }
+    for(int i = 0; i < size; i++){
+        a[i] = b[i];
+    }
+    return *a;
 
 }
