@@ -32,32 +32,35 @@ int main(){
 }
 
 int mergeSort(int *array, int left, int right){
-    if(left < right){
-      //  int tempA[right+1];
+    int tempA[right+1];
+
+    if((right - left) > 1){
+        
         int mid = (left + right)/2;
 
-        int j[right] = mergeSort(array, left, mid); // left subarray
-        int l[right] = mergeSort(array,  mid+1, right); // right subarray
+        mergeSort(array, left, mid); // left subarray
+        mergeSort(array,  mid+1, right); // right subarray
 
-       return merge(j, l, left, right, right+1);
+       *tempA =  merge(array, tempA, left, right, right+1);
+       //*array =  merge(tempA, array, left, right, right+1);
     }
-return *array;
+return *tempA;
 }
 
 int merge(int *a, int *b, int left, int right, int size){
     
     int target = left, leftBound = right, rightBound = size;
-    
+    //Go through partitions, while one of them is not empty.    
     while(left <= leftBound && right <= rightBound){
     
         if(a[left] <= a[right]){
-            b[target++] = a[left++];
+            b[target] = a[left++];
             //left++;
         } else { // a[right] < a[left]
-            b[target++] = a[right++];
+            b[target] = a[right++];
            // right++; 
         }
-        //target++;
+        target++;
     }
    
     /*
@@ -80,5 +83,4 @@ int merge(int *a, int *b, int left, int right, int size){
         a[i] = b[i];
     }
     return *a;
-
 }
