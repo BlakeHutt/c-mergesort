@@ -5,6 +5,7 @@
 
 int mergeSort(int *array, int *work ,int left, int right);
 int merge(int *a, int *b, int left, int right, int size);
+
 int main(){
 
      int size = 0;
@@ -25,14 +26,12 @@ int main(){
      for(int i = 0; i<length;i++){
          printf("A[%d]: %d\n",i, unSort[i]);
      }
-
-
     return 0;
 }
 
 int mergeSort(int *array, int *work, int left, int right){
 
-    if((left < right)){  
+    if((left != right)){  
         
         int mid =ceil(left + right)/2;
     

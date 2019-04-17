@@ -7,11 +7,11 @@ int mergeSort(int *array, int *work ,int left, int right);
 int merge(int *a, int *b, int left, int right, int size);
 int main(){
 
-     int size = 0;
+     int size = 11;
  
      srand(time(NULL));
-     printf("How many elemets: ");
-     scanf("%d", &size);
+    // printf("How many elemets: ");
+    // scanf("%d", &size);
      int unSort[size];
      int worker[size];
      for(int s = 0; s < size; s++){
@@ -30,17 +30,36 @@ int main(){
     return 0;
 }
 
+/*
+ *  Begin by starting at a subarray of 1 - designated as aSizePairs (Array Pair Size)
+ *  Go into another for loop, with with the begining index element always being 0 of the array.
+ *      Incrementing that value by twice the array pair size
+ *  Find the lowest value between the current index element + the current pair size or the size of the original array
+ *      Becomes the middle value of the subarray to be sorted, which is the leftBound/right pointer for subarray
+ *  Repeats process but for maximum value of subarray
+ *      Becomes the rightBound/size of the subarray
+ *  
+ *  Whole process repeats until the size pairs is larger than the original array size. 
+ */
+
 int mergeSort(int *array, int *work, int left, int right){
 
     if((left < right)){  
-        
-        int mid =ceil(left + right)/2;
-    
-        mergeSort(array, work, left, mid); // left subarray
-        mergeSort(array,  work, mid+1, right); // right subarray
-        
-        merge(array, work, left, mid+1, right+1); 
-        return *array;
+        for(int aSizePairs = 1; aSizePairs < right; aSizePairs *= 2){
+
+            for(int i = 0; i < right; i +=  (2*aSizePairs)){
+                int mid, high;
+                if((i+aSizePairs) <= right){
+                    mid = i+aSizePairs;
+                } else 
+                    mid = right+1;
+                if((i+(2*aSizePairs)) <= right){
+                    high = i+(2*aSizePairs);
+                } else 
+                    high = right+1;
+                merge(array, work, i, mid, high);
+            }
+        }        
     }
     return *array;
 }
