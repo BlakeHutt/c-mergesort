@@ -52,7 +52,7 @@ int mergeSort(int *array, int *work, int left, int right){
                 if((i+aSizePairs) <= right){
                     mid = i+aSizePairs;
                 } else 
-                    mid = right+1;
+                    mid = right;
                 if((i+(2*aSizePairs)) <= right){
                     high = i+(2*aSizePairs);
                 } else 
@@ -73,7 +73,7 @@ int merge(int *a, int *b, int left, int right, int size){
         if(a[left] <= a[right]){
             b[target++] = a[left++];
             //left++;
-        } else { // a[right] <= a[left]
+        } else { // a[right] < a[left]
             b[target++] = a[right++];
            // right++; 
         }

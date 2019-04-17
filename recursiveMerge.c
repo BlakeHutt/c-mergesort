@@ -39,7 +39,6 @@ int mergeSort(int *array, int *work, int left, int right){
         mergeSort(array,  work, mid+1, right); // right subarray
         
         merge(array, work, left, mid+1, right+1); 
-        return *array;
     }
     return *array;
 }
@@ -53,7 +52,7 @@ int merge(int *a, int *b, int left, int right, int size){
         if(a[left] <= a[right]){
             b[target++] = a[left++];
             //left++;
-        } else { // a[right] <= a[left]
+        } else { // a[right] < a[left]
             b[target++] = a[right++];
            // right++; 
         }
