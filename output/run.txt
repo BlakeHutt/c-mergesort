@@ -1,0 +1,70 @@
+-------------------------
+Amount of runs: 1
+Number of elements: 10000000
+-------------------------
+
+total time taken recursive: 2.036593
+Number of Dupes: 23276
+
+total time taken iterative: 1.962383
+Number of Dupes: 23038
+-------------------------
+Amount of runs: 10
+Number of elements: 1000000
+-------------------------
+
+total time taken recursive: 1.746245
+Number of Dupes: 2376
+
+total time taken iterative: 1.659941
+Number of Dupes: 2306
+-------------------------
+Amount of runs: 100
+Number of elements: 100000
+-------------------------
+
+total time taken recursive: 1.481097
+Number of Dupes: 258
+
+total time taken iterative: 1.386025
+Number of Dupes: 250
+-------------------------
+Amount of runs: 1000
+Number of elements: 10000
+-------------------------
+
+total time taken recursive: 1.218097
+Number of Dupes: 27
+
+total time taken iterative: 1.132842
+Number of Dupes: 19
+-------------------------
+Amount of runs: 10000
+Number of elements: 1000
+-------------------------
+
+total time taken recursive: 0.949951
+Number of Dupes: 1
+
+total time taken iterative: 0.863422
+Number of Dupes: 1
+-------------------------
+Amount of runs: 100000
+Number of elements: 100
+-------------------------
+
+total time taken recursive: 0.711527
+Number of Dupes: 0
+
+total time taken iterative: 0.656618
+Number of Dupes: 0
+-------------------------
+Amount of runs: 1000000
+Number of elements: 10
+-------------------------
+
+total time taken recursive: 0.725273
+Number of Dupes: 0
+
+total time taken iterative: 0.692352
+Number of Dupes: 0
