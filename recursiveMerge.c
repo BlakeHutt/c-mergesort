@@ -31,12 +31,12 @@ int main(){
 
 int mergeSort(int *array, int *work, int left, int right){
 
-    if((left != right)){  
+    if(left < right){  
         
         int mid =ceil(left + right)/2;
     
-        mergeSort(array, work, left, mid); // left subarray
-        mergeSort(array,  work, mid+1, right); // right subarray
+        mergeSort(array, work, left, mid); // left path
+        mergeSort(array,  work, mid+1, right); // right path
         
         merge(array, work, left, mid+1, right+1); 
     }
@@ -67,7 +67,6 @@ int merge(int *a, int *b, int left, int right, int size){
      *      ie left broke, so it does the right and vice versa.
      *
      */
-
 
     while(left < leftBound){
         b[target++] = a[left++];

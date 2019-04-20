@@ -61,12 +61,12 @@ int main(){
 
 int mergeSortR(int *array, int *work, int left, int right){
 
-    if((left < right)){  
+    if(left < right){  
         
         int mid =ceil(left + right)/2;
     
-        mergeSortR(array, work, left, mid); // left subarray
-        mergeSortR(array,  work, mid+1, right); // right subarray
+        mergeSortR(array, work, left, mid);
+        mergeSortR(array,  work, mid+1, right);
         
         merge(array, work, left, mid+1, right+1); 
         return *array;
@@ -99,29 +99,15 @@ int mergeSortI(int *array, int *work, int left, int right){
 
 int merge(int *a, int *b, int left, int right, int size){
     int target = left, leftBound = right, rightBound = size, oLeft = left;
-    //Go through partitions, while one of them is not empty.    
     while(left < leftBound && right < rightBound){
     
         if(a[left] <= a[right]){
             b[target++] = a[left++];
-            //left++;
-        } else { // a[right] <= a[left]
-            b[target++] = a[right++];
-           // right++; 
+        } else {
+            b[target++] = a[right++]; 
         }
-       // target++;
     }
    
-    /*
-     *  Copy rest of unsorted elements into array
-     *  Copy the temp array back into the main array
-     *
-     *  Depending on which broke the while, it does the other half of the array. 
-     *      ie left broke, so it does the right and vice versa.
-     *
-     */
-
-
     while(left < leftBound){
         b[target++] = a[left++];
     }

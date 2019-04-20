@@ -61,7 +61,7 @@ int main(){
 
 int mergeSortR(int *array, int *work, int left, int right){
 
-    if((left < right)){  
+    if(left < right){  
         
         int mid =ceil(left + right)/2;
     
@@ -76,7 +76,7 @@ int mergeSortR(int *array, int *work, int left, int right){
 int mergeSortI(int *array, int *work, int left, int right){
 
      if((left < right)){
-         for(int aSizePairs = 1; aSizePairs <= right; aSizePairs = 2*aSizePairs){
+         for(int aSizePairs = 1; aSizePairs <= right; aSizePairs *= 2){
 
              for(int i = 0; i <= right; i +=  (2*aSizePairs)){
                  int mid, high;

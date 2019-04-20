@@ -7,11 +7,11 @@ int mergeSort(int *array, int *work ,int left, int right);
 int merge(int *a, int *b, int left, int right, int size);
 int main(){
 
-     int size = 11;
+     int size = 0;
  
      srand(time(NULL));
-    // printf("How many elemets: ");
-    // scanf("%d", &size);
+     printf("How many elemets: ");
+     scanf("%d", &size);
      int unSort[size];
      int worker[size];
      for(int s = 0; s < size; s++){
@@ -31,7 +31,7 @@ int main(){
 }
 
 /*
- *  Begin by starting at a subarray of 1 - designated as aSizePairs (Array Pair Size)
+ *  Begin by starting at a subarray of 1 - designated as aSizePairs (Array Pair Size), sorting out neighbouring elements into pairs. 
  *  Go into another for loop, with with the begining index element always being 0 of the array.
  *      Incrementing that value by twice the array pair size
  *  Find the lowest value between the current index element + the current pair size or the size of the original array
@@ -67,7 +67,7 @@ int mergeSort(int *array, int *work, int left, int right){
 
 int merge(int *a, int *b, int left, int right, int size){
     int target = left, leftBound = right, rightBound = size, oLeft = left;
-    //Go through partitions, while one of them is not empty.    
+    //Go through 'partitions', while one of them is not empty.    
     while(left < leftBound && right < rightBound){
     
         if(a[left] <= a[right]){
@@ -84,7 +84,7 @@ int merge(int *a, int *b, int left, int right, int size){
      *  Copy rest of unsorted elements into array
      *  Copy the temp array back into the main array
      *
-     *  Depending on which broke the while, it does the other half of the array. 
+     *  Depending on which broke the while, it does the other half of the partiioned array. 
      *      ie left broke, so it does the right and vice versa.
      *
      */
